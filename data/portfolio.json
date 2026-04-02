@@ -3,8 +3,8 @@
     {
       "id": "exp-1",
       "title": "Software Developer",
-      "company": "Analog Devices",
-      "startDate": "2026-02",
+      "company": "Example Corp",
+      "startDate": "2023-01",
       "endDate": "Present",
       "description": "Building web apps with Next.js, TypeScript, and modern tooling."
     }
@@ -12,101 +12,15 @@
   "skills": [
     {
       "id": "skill-1",
-      "name": "C#",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"
+      "name": "JavaScript",
+      "level": "Advanced",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": "skill-2",
-      "name": ".NET",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
-    },
-    {
-      "id": "skill-3",
       "name": "TypeScript",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
-    },
-    {
-      "id": "skill-4",
-      "name": "Angular",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg"
-    },
-    {
-      "id": "skill-5",
-      "name": "React",
-      "level": "Beginner",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-    },
-    {
-      "id": "skill-6",
-      "name": "JavaScript",
       "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"
-    },
-    {
-      "id": "skill-7",
-      "name": "HTML",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-    },
-    {
-      "id": "skill-8",
-      "name": "CSS",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-    }
-  ],
-  "tools": [
-    {
-      "id": "skill-9",
-      "name": "SQL Server",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
-    },
-    {
-      "id": "skill-10",
-      "name": "Oracle",
-      "level": "Beginner",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
-    },
-    {
-      "id": "skill-11",
-      "name": "Git",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-    },
-    {
-      "id": "skill-12",
-      "name": "GitHub",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-    },
-    {
-      "id": "skill-13",
-      "name": "Postman",
-      "level": "Intermediate",
-      "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-plain.svg"
-    },
-    {
-      "id": "skill-14",
-      "name": "VS Code",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-    },
-    {
-      "id": "skill-15",
-      "name": "Visual Studio",
-      "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg"
-    },
-    {
-      "id": "skill-16",
-      "name": "JetBrains",
-      "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jetbrains/jetbrains-original.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
     }
   ]
 }
