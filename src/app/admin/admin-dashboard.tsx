@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import type { Experience, PortfolioData, Skill } from "@/lib/portfolio-types";
+import { ExperienceRow } from "./components/experience-row";
+import { ExperienceCreateForm } from "./components/experience-create-form";
+import { SkillToolCreateForm } from "./components/skill-tool-create-from";
+import { SkillToolRow } from "./components/skill-tool-row";
 
 async function fetchPortfolio(): Promise<PortfolioData> {
   const res = await fetch("/api/portfolio", { cache: "no-store" });
@@ -91,15 +95,11 @@ export function AdminDashboard() {
   }
 
   if (!data && !loadError) {
-    return (
-      <p className="p-8 text-center text-sm text-muted">Loading…</p>
-    );
+    return <p className="p-8 text-center text-sm text-muted">Loading…</p>;
   }
 
   if (loadError || !data) {
-    return (
-      <p className="p-8 text-center text-sm text-red-500">{loadError}</p>
-    );
+    return <p className="p-8 text-center text-sm text-red-500">{loadError}</p>;
   }
 
   return (
@@ -147,10 +147,7 @@ export function AdminDashboard() {
             </li>
           ))}
         </ul>
-        <ExperienceCreateForm
-          disabled={busy}
-          onCreated={setData}
-        />
+        <ExperienceCreateForm disabled={busy} onCreated={setData} />
       </section>
 
       <section className="mb-12">
@@ -161,7 +158,7 @@ export function AdminDashboard() {
               key={skill.id}
               className="rounded border border-border bg-surface p-4 text-sm"
             >
-              <SkillLikeRow
+              <SkillToolRow
                 item={skill}
                 resource="skills"
                 disabled={busy}
@@ -171,7 +168,7 @@ export function AdminDashboard() {
             </li>
           ))}
         </ul>
-        <SkillLikeCreateForm
+        <SkillToolCreateForm
           resource="skills"
           addLabel="Add skill"
           idPlaceholder="skill-3"
@@ -188,7 +185,7 @@ export function AdminDashboard() {
               key={tool.id}
               className="rounded border border-border bg-surface p-4 text-sm"
             >
-              <SkillLikeRow
+              <SkillToolRow
                 item={tool}
                 resource="tools"
                 disabled={busy}
@@ -198,7 +195,7 @@ export function AdminDashboard() {
             </li>
           ))}
         </ul>
-        <SkillLikeCreateForm
+        <SkillToolCreateForm
           resource="tools"
           addLabel="Add tool"
           idPlaceholder="tool-17"
@@ -207,484 +204,5 @@ export function AdminDashboard() {
         />
       </section>
     </div>
-  );
-}
-
-function ExperienceRow({
-  exp,
-  disabled,
-  onSaved,
-  onDelete,
-}: {
-  exp: Experience;
-  disabled: boolean;
-  onSaved: (d: PortfolioData) => void;
-  onDelete: () => void;
-}) {
-  const [editing, setEditing] = useState(false);
-  const [title, setTitle] = useState(exp.title);
-  const [company, setCompany] = useState(exp.company);
-  const [startDate, setStartDate] = useState(exp.startDate);
-  const [endDate, setEndDate] = useState(exp.endDate);
-  const [description, setDescription] = useState(exp.description);
-
-  async function save() {
-    const res = await fetch(`/api/experiences/${encodeURIComponent(exp.id)}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title,
-        company,
-        startDate,
-        endDate,
-        description,
-      }),
-    });
-    if (!res.ok) {
-      const j = (await res.json().catch(() => ({}))) as { error?: string };
-      alert(j.error || "Update failed");
-      return;
-    }
-    onSaved(await res.json());
-    setEditing(false);
-  }
-
-  if (!editing) {
-    return (
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="font-medium text-foreground">
-            {exp.title} · {exp.company}
-          </p>
-          <p className="text-xs text-muted">
-            {exp.startDate} — {exp.endDate}
-          </p>
-          <p className="mt-2 text-muted">{exp.description}</p>
-        </div>
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            disabled={disabled}
-            onClick={() => setEditing(true)}
-            className="rounded border border-border px-2 py-1 text-xs hover:border-accent"
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            disabled={disabled}
-            onClick={onDelete}
-            className="rounded border border-border px-2 py-1 text-xs text-red-500 hover:border-red-500"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-2">
-      <div className="grid gap-2 sm:grid-cols-2">
-        <label className="text-xs">
-          <span className="text-muted">Title</span>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Company</span>
-          <input
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Start</span>
-          <input
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">End</span>
-          <input
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-      </div>
-      <label className="block text-xs">
-        <span className="text-muted">Description</span>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          rows={3}
-          className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-        />
-      </label>
-      <div className="flex gap-2">
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={() => void save()}
-          className="rounded border border-accent bg-accent px-2 py-1 text-xs text-accent-fg"
-        >
-          Save
-        </button>
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={() => {
-            setTitle(exp.title);
-            setCompany(exp.company);
-            setStartDate(exp.startDate);
-            setEndDate(exp.endDate);
-            setDescription(exp.description);
-            setEditing(false);
-          }}
-          className="rounded border border-border px-2 py-1 text-xs"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function ExperienceCreateForm({
-  disabled,
-  onCreated,
-}: {
-  disabled: boolean;
-  onCreated: (d: PortfolioData) => void;
-}) {
-  const empty: Experience = {
-    id: "",
-    title: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-  };
-  const [fields, setFields] = useState(empty);
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!fields.id.trim()) {
-      alert("ID is required (e.g. exp-2)");
-      return;
-    }
-    const res = await fetch("/api/experiences", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fields),
-    });
-    if (!res.ok) {
-      const j = (await res.json().catch(() => ({}))) as { error?: string };
-      alert(j.error || "Create failed");
-      return;
-    }
-    onCreated(await res.json());
-    setFields(empty);
-  }
-
-  return (
-    <form
-      onSubmit={(e) => void submit(e)}
-      className="space-y-2 rounded border border-dashed border-border p-4"
-    >
-      <p className="text-sm font-medium text-foreground">Add experience</p>
-      <div className="grid gap-2 sm:grid-cols-2">
-        <label className="text-xs">
-          <span className="text-muted">ID</span>
-          <input
-            value={fields.id}
-            onChange={(e) => setFields({ ...fields, id: e.target.value })}
-            placeholder="exp-2"
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Title</span>
-          <input
-            value={fields.title}
-            onChange={(e) => setFields({ ...fields, title: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Company</span>
-          <input
-            value={fields.company}
-            onChange={(e) => setFields({ ...fields, company: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Start</span>
-          <input
-            value={fields.startDate}
-            onChange={(e) =>
-              setFields({ ...fields, startDate: e.target.value })
-            }
-            placeholder="2024-01"
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">End</span>
-          <input
-            value={fields.endDate}
-            onChange={(e) => setFields({ ...fields, endDate: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-      </div>
-      <label className="block text-xs">
-        <span className="text-muted">Description</span>
-        <textarea
-          value={fields.description}
-          onChange={(e) =>
-            setFields({ ...fields, description: e.target.value })
-          }
-          rows={2}
-          className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          required
-        />
-      </label>
-      <button
-        type="submit"
-        disabled={disabled}
-        className="rounded border border-accent bg-accent px-3 py-1.5 text-xs text-accent-fg"
-      >
-        Add experience
-      </button>
-    </form>
-  );
-}
-
-type SkillResource = "skills" | "tools";
-
-function SkillLikeRow({
-  item,
-  resource,
-  disabled,
-  onSaved,
-  onDelete,
-}: {
-  item: Skill;
-  resource: SkillResource;
-  disabled: boolean;
-  onSaved: (d: PortfolioData) => void;
-  onDelete: () => void;
-}) {
-  const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(item.name);
-  const [level, setLevel] = useState(item.level);
-  const [icon, setIcon] = useState(item.icon);
-
-  async function save() {
-    const res = await fetch(
-      `/api/${resource}/${encodeURIComponent(item.id)}`,
-      {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, level, icon }),
-      },
-    );
-    if (!res.ok) {
-      const j = (await res.json().catch(() => ({}))) as { error?: string };
-      alert(j.error || "Update failed");
-      return;
-    }
-    onSaved(await res.json());
-    setEditing(false);
-  }
-
-  if (!editing) {
-    return (
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-medium text-foreground">{item.name}</p>
-          <p className="text-xs text-muted">{item.level}</p>
-          <p className="mt-1 truncate text-xs text-muted">{item.icon}</p>
-        </div>
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            disabled={disabled}
-            onClick={() => setEditing(true)}
-            className="rounded border border-border px-2 py-1 text-xs hover:border-accent"
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            disabled={disabled}
-            onClick={onDelete}
-            className="rounded border border-border px-2 py-1 text-xs text-red-500 hover:border-red-500"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-2">
-      <div className="grid gap-2 sm:grid-cols-2">
-        <label className="text-xs">
-          <span className="text-muted">Name</span>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Level</span>
-          <input
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-          />
-        </label>
-      </div>
-      <label className="block text-xs">
-        <span className="text-muted">Icon URL</span>
-        <input
-          value={icon}
-          onChange={(e) => setIcon(e.target.value)}
-          className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-        />
-      </label>
-      <div className="flex gap-2">
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={() => void save()}
-          className="rounded border border-accent bg-accent px-2 py-1 text-xs text-accent-fg"
-        >
-          Save
-        </button>
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={() => {
-            setName(item.name);
-            setLevel(item.level);
-            setIcon(item.icon);
-            setEditing(false);
-          }}
-          className="rounded border border-border px-2 py-1 text-xs"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function SkillLikeCreateForm({
-  resource,
-  addLabel,
-  idPlaceholder,
-  disabled,
-  onCreated,
-}: {
-  resource: SkillResource;
-  addLabel: string;
-  idPlaceholder: string;
-  disabled: boolean;
-  onCreated: (d: PortfolioData) => void;
-}) {
-  const empty: Skill = { id: "", name: "", level: "", icon: "" };
-  const [fields, setFields] = useState(empty);
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!fields.id.trim()) {
-      alert(`ID is required (e.g. ${idPlaceholder})`);
-      return;
-    }
-    const res = await fetch(`/api/${resource}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(fields),
-    });
-    if (!res.ok) {
-      const j = (await res.json().catch(() => ({}))) as { error?: string };
-      alert(j.error || "Create failed");
-      return;
-    }
-    onCreated(await res.json());
-    setFields(empty);
-  }
-
-  return (
-    <form
-      onSubmit={(e) => void submit(e)}
-      className="space-y-2 rounded border border-dashed border-border p-4"
-    >
-      <p className="text-sm font-medium text-foreground">{addLabel}</p>
-      <div className="grid gap-2 sm:grid-cols-2">
-        <label className="text-xs">
-          <span className="text-muted">ID</span>
-          <input
-            value={fields.id}
-            onChange={(e) => setFields({ ...fields, id: e.target.value })}
-            placeholder={idPlaceholder}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Name</span>
-          <input
-            value={fields.name}
-            onChange={(e) => setFields({ ...fields, name: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs">
-          <span className="text-muted">Level</span>
-          <input
-            value={fields.level}
-            onChange={(e) => setFields({ ...fields, level: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-        <label className="text-xs sm:col-span-2">
-          <span className="text-muted">Icon URL</span>
-          <input
-            value={fields.icon}
-            onChange={(e) => setFields({ ...fields, icon: e.target.value })}
-            className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
-            required
-          />
-        </label>
-      </div>
-      <button
-        type="submit"
-        disabled={disabled}
-        className="rounded border border-accent bg-accent px-3 py-1.5 text-xs text-accent-fg"
-      >
-        {addLabel}
-      </button>
-    </form>
   );
 }

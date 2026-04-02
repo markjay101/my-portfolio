@@ -4,6 +4,7 @@ import { Hero } from "@/components/portfolio/hero";
 import { SkillsSection } from "@/components/portfolio/skills";
 import { ToolsSection } from "@/components/portfolio/tools";
 import { readPortfolio } from "@/lib/portfolio-data";
+import { SiteFooter } from "@/components/site-footer";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,7 @@ export default async function Home() {
         <SkillsSection items={data.skills} />
         <ToolsSection items={data.tools} />
       </main>
+      <SiteFooter />
     </div>
   );
 }
