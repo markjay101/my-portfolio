@@ -1,0 +1,26 @@
+{
+  "experiences": [
+    {
+      "id": "exp-1",
+      "title": "Software Developer",
+      "company": "Example Corp",
+      "startDate": "2023-01",
+      "endDate": "Present",
+      "description": "Building web apps with Next.js, TypeScript, and modern tooling."
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-1",
+      "name": "JavaScript",
+      "level": "Advanced",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    },
+    {
+      "id": "skill-2",
+      "name": "TypeScript",
+      "level": "Advanced",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    }
+  ]
+}

@@ -1,12 +1,20 @@
-import { ThemeToggle } from "@/components/theme-toggle";
+import { SiteHeader } from "@/components/site-header";
+import { ExperiencesSection } from "@/components/portfolio/experiences";
+import { Hero } from "@/components/portfolio/hero";
+import { SkillsSection } from "@/components/portfolio/skills";
+import { readPortfolio } from "@/lib/portfolio-data";
 
-export default function Home() {
+export default async function Home() {
+  const data = await readPortfolio();
+
   return (
-    <div className="min-h-screen bg-background text-foreground p-8">
-      <div className="flex items-center justify-between gap-4">
-        <p className="text-muted">Theme + Tailwind</p>
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-background text-foreground">
+      <SiteHeader />
+      <main className="mx-auto max-w-3xl px-4 pb-16 sm:px-6">
+        <Hero />
+        <ExperiencesSection items={data.experiences} />
+        <SkillsSection items={data.skills} />
+      </main>
     </div>
   );
 }
