@@ -1,8 +1,7 @@
 import { createHmac, timingSafeEqual } from "crypto";
+import { ADMIN_SESSION_COOKIE, MAX_AGE_SEC } from "./auth-constants";
 
-export const ADMIN_SESSION_COOKIE = "admin_session";
-
-const MAX_AGE_SEC = 60 * 60 * 24 * 7;
+export { ADMIN_SESSION_COOKIE, MAX_AGE_SEC } from "./auth-constants";
 
 function requireSecret(): string {
   const s = process.env.ADMIN_SECRET_KEY;
@@ -50,4 +49,3 @@ export function getSessionFromRequest(request: Request): boolean {
   return verifySessionToken(decodeURIComponent(match[1]));
 }
 
-export { MAX_AGE_SEC };
