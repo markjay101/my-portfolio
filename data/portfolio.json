@@ -14,7 +14,7 @@
       "company": "Codeskitch Solutions",
       "startDate": "2024-08",
       "endDate": "2025-12",
-      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+      "description": "Designed and developed multiple web applications across Blazor Server, ASP.NET Core, and .NET technologies, implementing features such as AI-driven market analysis, SaaS modules, eCommerce enhancements, system integrations, and optimized APIs, while improving performance, automation, and real-time reporting across platforms."
     },
     {
       "id": "exp-3",
@@ -22,7 +22,7 @@
       "company": "Philippinie National Bank",
       "startDate": "2024-02",
       "endDate": "2024-08",
-      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+      "description": "Developed a .NET console application for automated secure sFTP file transfers, built a data management web portal using ASP.NET Core MVC, and provided ongoing support and maintenance to ensure application stability and performance."
     },
     {
       "id": "exp-4",
@@ -30,7 +30,7 @@
       "company": "VCT Netword and Data Solutions",
       "startDate": "2023-04",
       "endDate": "2023-08",
-      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+      "description": "Developed full-stack web applications including Learning Management, School Management, and PESO systems using ASP.NET Core Razor Pages, and built a video conferencing app with an interactive multi-user grid layout using HTML, CSS, and JavaScript."
     }
   ],
   "skills": [
@@ -44,7 +44,7 @@
       "id": "skill-2",
       "name": ".NET",
       "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+      "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzemPW2zVigKv44mjIDfGwrf_Rgzcyu07m_A&s"
     },
     {
       "id": "skill-3",
@@ -128,9 +128,9 @@
     },
     {
       "id": "tool-16",
-      "name": "JetBrains",
+      "name": "JetBrains Rider",
       "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jetbrains/jetbrains-original.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rider/rider-original.svg"
     }
   ]
 }
