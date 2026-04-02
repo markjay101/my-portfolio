@@ -4,6 +4,8 @@ import { Hero } from "@/components/portfolio/hero";
 import { SkillsSection } from "@/components/portfolio/skills";
 import { readPortfolio } from "@/lib/portfolio-data";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const data = await readPortfolio();
 
