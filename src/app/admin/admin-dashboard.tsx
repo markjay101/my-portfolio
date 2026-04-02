@@ -72,6 +72,24 @@ export function AdminDashboard() {
     }
   }
 
+  async function delTool(id: string) {
+    if (!confirm("Delete this tool?")) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/tools/${encodeURIComponent(id)}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        const j = (await res.json().catch(() => ({}))) as { error?: string };
+        alert(j.error || "Delete failed");
+        return;
+      }
+      setData(await res.json());
+    } finally {
+      setBusy(false);
+    }
+  }
+
   if (!data && !loadError) {
     return (
       <p className="p-8 text-center text-sm text-muted">Loading…</p>
@@ -89,7 +107,9 @@ export function AdminDashboard() {
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-lg font-semibold text-foreground">Admin</h1>
-          <p className="text-sm text-muted">Manage experiences and skills</p>
+          <p className="text-sm text-muted">
+            Manage experiences, skills, and tools
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Link
@@ -133,7 +153,7 @@ export function AdminDashboard() {
         />
       </section>
 
-      <section>
+      <section className="mb-12">
         <h2 className="mb-4 text-base font-semibold text-foreground">Skills</h2>
         <ul className="mb-6 space-y-4">
           {data.skills.map((skill) => (
@@ -141,8 +161,9 @@ export function AdminDashboard() {
               key={skill.id}
               className="rounded border border-border bg-surface p-4 text-sm"
             >
-              <SkillRow
-                skill={skill}
+              <SkillLikeRow
+                item={skill}
+                resource="skills"
                 disabled={busy}
                 onSaved={setData}
                 onDelete={() => void delSkill(skill.id)}
@@ -150,7 +171,40 @@ export function AdminDashboard() {
             </li>
           ))}
         </ul>
-        <SkillCreateForm disabled={busy} onCreated={setData} />
+        <SkillLikeCreateForm
+          resource="skills"
+          addLabel="Add skill"
+          idPlaceholder="skill-3"
+          disabled={busy}
+          onCreated={setData}
+        />
+      </section>
+
+      <section>
+        <h2 className="mb-4 text-base font-semibold text-foreground">Tools</h2>
+        <ul className="mb-6 space-y-4">
+          {data.tools.map((tool) => (
+            <li
+              key={tool.id}
+              className="rounded border border-border bg-surface p-4 text-sm"
+            >
+              <SkillLikeRow
+                item={tool}
+                resource="tools"
+                disabled={busy}
+                onSaved={setData}
+                onDelete={() => void delTool(tool.id)}
+              />
+            </li>
+          ))}
+        </ul>
+        <SkillLikeCreateForm
+          resource="tools"
+          addLabel="Add tool"
+          idPlaceholder="tool-17"
+          disabled={busy}
+          onCreated={setData}
+        />
       </section>
     </div>
   );
@@ -420,28 +474,35 @@ function ExperienceCreateForm({
   );
 }
 
-function SkillRow({
-  skill,
+type SkillResource = "skills" | "tools";
+
+function SkillLikeRow({
+  item,
+  resource,
   disabled,
   onSaved,
   onDelete,
 }: {
-  skill: Skill;
+  item: Skill;
+  resource: SkillResource;
   disabled: boolean;
   onSaved: (d: PortfolioData) => void;
   onDelete: () => void;
 }) {
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(skill.name);
-  const [level, setLevel] = useState(skill.level);
-  const [icon, setIcon] = useState(skill.icon);
+  const [name, setName] = useState(item.name);
+  const [level, setLevel] = useState(item.level);
+  const [icon, setIcon] = useState(item.icon);
 
   async function save() {
-    const res = await fetch(`/api/skills/${encodeURIComponent(skill.id)}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, level, icon }),
-    });
+    const res = await fetch(
+      `/api/${resource}/${encodeURIComponent(item.id)}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, level, icon }),
+      },
+    );
     if (!res.ok) {
       const j = (await res.json().catch(() => ({}))) as { error?: string };
       alert(j.error || "Update failed");
@@ -455,9 +516,9 @@ function SkillRow({
     return (
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="font-medium text-foreground">{skill.name}</p>
-          <p className="text-xs text-muted">{skill.level}</p>
-          <p className="mt-1 truncate text-xs text-muted">{skill.icon}</p>
+          <p className="font-medium text-foreground">{item.name}</p>
+          <p className="text-xs text-muted">{item.level}</p>
+          <p className="mt-1 truncate text-xs text-muted">{item.icon}</p>
         </div>
         <div className="flex shrink-0 gap-2">
           <button
@@ -522,9 +583,9 @@ function SkillRow({
           type="button"
           disabled={disabled}
           onClick={() => {
-            setName(skill.name);
-            setLevel(skill.level);
-            setIcon(skill.icon);
+            setName(item.name);
+            setLevel(item.level);
+            setIcon(item.icon);
             setEditing(false);
           }}
           className="rounded border border-border px-2 py-1 text-xs"
@@ -536,10 +597,16 @@ function SkillRow({
   );
 }
 
-function SkillCreateForm({
+function SkillLikeCreateForm({
+  resource,
+  addLabel,
+  idPlaceholder,
   disabled,
   onCreated,
 }: {
+  resource: SkillResource;
+  addLabel: string;
+  idPlaceholder: string;
   disabled: boolean;
   onCreated: (d: PortfolioData) => void;
 }) {
@@ -549,10 +616,10 @@ function SkillCreateForm({
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!fields.id.trim()) {
-      alert("ID is required (e.g. skill-3)");
+      alert(`ID is required (e.g. ${idPlaceholder})`);
       return;
     }
-    const res = await fetch("/api/skills", {
+    const res = await fetch(`/api/${resource}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(fields),
@@ -571,14 +638,14 @@ function SkillCreateForm({
       onSubmit={(e) => void submit(e)}
       className="space-y-2 rounded border border-dashed border-border p-4"
     >
-      <p className="text-sm font-medium text-foreground">Add skill</p>
+      <p className="text-sm font-medium text-foreground">{addLabel}</p>
       <div className="grid gap-2 sm:grid-cols-2">
         <label className="text-xs">
           <span className="text-muted">ID</span>
           <input
             value={fields.id}
             onChange={(e) => setFields({ ...fields, id: e.target.value })}
-            placeholder="skill-3"
+            placeholder={idPlaceholder}
             className="mt-0.5 w-full rounded border border-border bg-background px-2 py-1"
             required
           />
@@ -616,7 +683,7 @@ function SkillCreateForm({
         disabled={disabled}
         className="rounded border border-accent bg-accent px-3 py-1.5 text-xs text-accent-fg"
       >
-        Add skill
+        {addLabel}
       </button>
     </form>
   );

@@ -17,4 +17,5 @@ export type Skill = {
 export type PortfolioData = {
   experiences: Experience[];
   skills: Skill[];
+  tools: Skill[];
 };

@@ -10,7 +10,9 @@ function serialize(data: PortfolioData): string {
 
 export async function readPortfolio(): Promise<PortfolioData> {
   const raw = await fs.readFile(DATA_FILE, "utf-8");
-  return JSON.parse(raw) as PortfolioData;
+  const data = JSON.parse(raw) as PortfolioData;
+  if (!data.tools) data.tools = [];
+  return data;
 }
 
 export async function writePortfolio(data: PortfolioData): Promise<void> {
@@ -65,6 +67,32 @@ export async function updateSkill(
 export async function deleteSkill(id: string): Promise<PortfolioData> {
   const data = await readPortfolio();
   data.skills = data.skills.filter((s) => s.id !== id);
+  await writePortfolio(data);
+  return data;
+}
+
+export async function addTool(tool: Skill): Promise<PortfolioData> {
+  const data = await readPortfolio();
+  data.tools.push(tool);
+  await writePortfolio(data);
+  return data;
+}
+
+export async function updateTool(
+  id: string,
+  patch: Partial<Omit<Skill, "id">>,
+): Promise<PortfolioData> {
+  const data = await readPortfolio();
+  const i = data.tools.findIndex((t) => t.id === id);
+  if (i === -1) throw new Error("Tool not found");
+  data.tools[i] = { ...data.tools[i], ...patch, id };
+  await writePortfolio(data);
+  return data;
+}
+
+export async function deleteTool(id: string): Promise<PortfolioData> {
+  const data = await readPortfolio();
+  data.tools = data.tools.filter((t) => t.id !== id);
   await writePortfolio(data);
   return data;
 }
