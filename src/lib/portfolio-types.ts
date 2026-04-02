@@ -14,10 +14,24 @@ export type Skill = {
   icon: string;
 };
 
+export type Project = {
+  id: string;
+  name: string;
+  url: string | null;
+  company: string;
+  startDate: string;
+  endDate: string;
+  image: string | null;
+  description: string;
+  skills: string[];
+  tools: string[];
+};
+
 export type PortfolioData = {
   experiences: Experience[];
   skills: Skill[];
   tools: Skill[];
+  projects: Project[];
 };
 
 export type SkillResource = "skills" | "tools";

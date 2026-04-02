@@ -4,7 +4,7 @@ export function SkillsSection({ items }: { items: Skill[] }) {
   return (
     <section className="border-b border-border py-12 sm:py-16">
       <h2 className="mb-8 text-lg font-semibold text-foreground">Skills</h2>
-      <ul className="grid gap-4 sm:grid-cols-2">
+      <ul className="flex flex-wrap gap-4">
         {items.map((skill) => (
           <li
             key={skill.id}
@@ -19,7 +19,9 @@ export function SkillsSection({ items }: { items: Skill[] }) {
               className="h-7 w-7 shrink-0 opacity-90"
             />
             <div className="min-w-0 flex-1">
-              <p className="truncate font-medium text-foreground">{skill.name}</p>
+              <p className="truncate font-medium text-foreground">
+                {skill.name}
+              </p>
               <p className="text-xs text-muted">{skill.level}</p>
             </div>
           </li>

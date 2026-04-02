@@ -60,24 +60,30 @@
     },
     {
       "id": "skill-5",
+      "name": "Next JS",
+      "level": "Beginner",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-line-wordmark.svg"
+    },
+    {
+      "id": "skill-6",
       "name": "React",
       "level": "Beginner",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
     },
     {
-      "id": "skill-6",
+      "id": "skill-7",
       "name": "JavaScript",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
-      "id": "skill-7",
+      "id": "skill-8",
       "name": "HTML",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
     },
     {
-      "id": "skill-8",
+      "id": "skill-9",
       "name": "CSS",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
@@ -85,52 +91,132 @@
   ],
   "tools": [
     {
-      "id": "tool-9",
+      "id": "tool-1",
       "name": "SQL Server",
       "level": "Intermediate",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
     },
     {
-      "id": "tool-10",
+      "id": "tool-2",
       "name": "Oracle",
       "level": "Beginner",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
     },
     {
-      "id": "tool-11",
+      "id": "tool-3",
       "name": "Git",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
     },
     {
-      "id": "tool-12",
+      "id": "tool-4",
       "name": "GitHub",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
     },
     {
-      "id": "tool-13",
+      "id": "tool-5",
       "name": "Postman",
       "level": "Intermediate",
       "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-original.svg"
     },
     {
-      "id": "tool-14",
+      "id": "tool-6",
+      "name": "Swagger",
+      "level": "Intermediate",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg"
+    },
+    {
+      "id": "tool-7",
       "name": "VS Code",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
     },
     {
-      "id": "tool-15",
+      "id": "tool-8",
       "name": "Visual Studio",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg"
     },
     {
-      "id": "tool-16",
+      "id": "tool-9",
       "name": "JetBrains Rider",
       "level": "Intermediate",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rider/rider-original.svg"
+    }
+  ],
+  "projects":[
+    {
+      "id": "proj-2",
+      "name": "Internet Management System",
+      "url": null,
+      "company": "Personal Project",
+      "startDate": "2026-02",
+      "endDate": "2026-02",
+      "image": "/images/ims-project.png",
+      "description": "An Internet Management System is a web-based platform designed for small to medium internet service providers to manage customers, applications, modem devices, and service statuses in a centralized and efficient way.",
+      "skills": ["skill-1", "skill-2", "skill-3", "skill-4"],
+      "tools": ["tool-1", "tool-3", "tool-5", "tool-8"]
+    },
+    {
+      "id": "proj-3",
+      "name": "Ajaa",
+      "url": "https://ajaa.io/",
+      "company": "Codeskitch Solutions",
+      "startDate": "2025-02",
+      "endDate": "2025-10",
+      "image": "/images/ajaa-project.png",
+      "description": "Ajaa is an all-in-one productivity platform that helps teams and individuals manage tasks, projects, invoicing, collaboration, and knowledge sharing across multiple businesses in one centralized system.",
+      "skills": ["skill-1", "skill-2", "skill-7", "skill-8", "skill-9"],
+      "tools": ["tool-1", "tool-8"]
+    },
+    {
+      "id": "proj-4",
+      "name": "Envy Wheels",
+      "url": "https://www.envywheels.com/",
+      "company": "Codeskitch Solutions",
+      "startDate": "2024-09",
+      "endDate": "2025-10",
+      "image": "/images/envy-wheels-project.png",
+      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "skills": ["skill-1", "skill-2", "skill-7", "skill-8", "skill-9"],
+      "tools": ["tool-1", "tool-5", "tool-8"]
+    },
+    {
+      "id": "proj-5",
+      "name": "Investor Tracker",
+      "url": null,
+      "company": "Codeskitch Solutions",
+      "startDate": "2025-08",
+      "endDate": "2025-08",
+      "image": "/images/investor-tracker-project.png",
+      "description": "Investor Tracker is an AI-powered platform that lets users track investors or companies, analyzes trusted web data to generate market insights and buy/sell recommendations, and sends email notifications for the latest updates and news.",
+      "skills": ["skill-1", "skill-2"],
+      "tools": ["tool-1", "tool-5"]
+    },
+    {
+      "id": "proj-6",
+      "name": "Valuemeal",
+      "url": "https://valuemeal-wordpress.codeskitch.com/",
+      "company": "Codeskitch Solutions",
+      "startDate": "2025-04",
+      "endDate": "2025-04",
+      "image": "/images/value-meal-project.png",
+      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "skills": ["skill-7", "skill-8", "skill-9"],
+      "tools": ["tool-7"]
+    },
+    {
+      "id": "proj-7",
+      "name": "Vitality",
+      "url": "https://vitality-wordpress.codeskitch.com/",
+      "company": "Codeskitch Solutions",
+      "startDate": "2025-04",
+      "endDate": "2025-04",
+      "image": "/images/vitality-project.png",
+      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "skills": ["skill-7", "skill-8", "skill-9"],
+      "tools": ["tool-7"]
     }
   ]
 }
