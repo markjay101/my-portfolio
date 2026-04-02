@@ -6,7 +6,31 @@
       "company": "Analog Devices",
       "startDate": "2026-02",
       "endDate": "Present",
-      "description": "Building web apps with Next.js, TypeScript, and modern tooling."
+      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+    },
+    {
+      "id": "exp-2",
+      "title": ".Net Developer",
+      "company": "Codeskitch Solutions",
+      "startDate": "2024-08",
+      "endDate": "2025-12",
+      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+    },
+    {
+      "id": "exp-3",
+      "title": ".Net Developer GH",
+      "company": "Philippinie National Bank",
+      "startDate": "2024-02",
+      "endDate": "2024-08",
+      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
+    },
+    {
+      "id": "exp-4",
+      "title": "Web Developer Intern",
+      "company": "VCT Netword and Data Solutions",
+      "startDate": "2023-04",
+      "endDate": "2023-08",
+      "description": "Engineered a suite of .NET applications to offload heavy stored procedure processing, ingest and parse unstructured log files into a centralized database, and provide a web-based interface for real-time system monitoring and troubleshooting."
     }
   ],
   "skills": [
@@ -26,7 +50,7 @@
       "id": "skill-3",
       "name": "TypeScript",
       "level": "Intermediate",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
     },
     {
       "id": "skill-4",
@@ -44,66 +68,66 @@
       "id": "skill-6",
       "name": "JavaScript",
       "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
     },
     {
       "id": "skill-7",
       "name": "HTML",
       "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
     },
     {
       "id": "skill-8",
       "name": "CSS",
       "level": "Advanced",
-      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
     }
   ],
   "tools": [
     {
-      "id": "skill-9",
+      "id": "tool-9",
       "name": "SQL Server",
       "level": "Intermediate",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
     },
     {
-      "id": "skill-10",
+      "id": "tool-10",
       "name": "Oracle",
       "level": "Beginner",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
     },
     {
-      "id": "skill-11",
+      "id": "tool-11",
       "name": "Git",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
     },
     {
-      "id": "skill-12",
+      "id": "tool-12",
       "name": "GitHub",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
     },
     {
-      "id": "skill-13",
+      "id": "tool-13",
       "name": "Postman",
       "level": "Intermediate",
-      "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-plain.svg"
+      "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-original.svg"
     },
     {
-      "id": "skill-14",
+      "id": "tool-14",
       "name": "VS Code",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
     },
     {
-      "id": "skill-15",
+      "id": "tool-15",
       "name": "Visual Studio",
       "level": "Advanced",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg"
     },
     {
-      "id": "skill-16",
+      "id": "tool-16",
       "name": "JetBrains",
       "level": "Intermediate",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jetbrains/jetbrains-original.svg"
