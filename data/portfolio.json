@@ -27,7 +27,7 @@
     {
       "id": "exp-4",
       "title": "Web Developer Intern",
-      "company": "VCT Netword and Data Solutions",
+      "company": "VCT Network and Data Solutions",
       "startDate": "2023-04",
       "endDate": "2023-08",
       "description": "Developed full-stack web applications including Learning Management, School Management, and PESO systems using ASP.NET Core Razor Pages, and built a video conferencing app with an interactive multi-user grid layout using HTML, CSS, and JavaScript."
@@ -154,7 +154,7 @@
       "startDate": "2026-02",
       "endDate": "2026-02",
       "image": "/images/ims-project.png",
-      "description": "An Internet Management System is a web-based platform designed for small to medium internet service providers to manage customers, applications, modem devices, and service statuses in a centralized and efficient way.",
+      "description": "A web-based system designed for small to medium internet service providers to manage customers, service applications, modem devices, and status tracking in a centralized platform, improving operational efficiency and data organization.",
       "skills": ["skill-1", "skill-2", "skill-3", "skill-4"],
       "tools": ["tool-1", "tool-3", "tool-5", "tool-8"]
     },
@@ -166,7 +166,7 @@
       "startDate": "2025-02",
       "endDate": "2025-10",
       "image": "/images/ajaa-project.png",
-      "description": "Ajaa is an all-in-one productivity platform that helps teams and individuals manage tasks, projects, invoicing, collaboration, and knowledge sharing across multiple businesses in one centralized system.",
+      "description": "An all-in-one productivity platform that enables teams and individuals to manage tasks, projects, invoicing, collaboration, and knowledge sharing across multiple businesses in a unified system.",
       "skills": ["skill-1", "skill-2", "skill-7", "skill-8", "skill-9"],
       "tools": ["tool-1", "tool-8"]
     },
@@ -178,7 +178,7 @@
       "startDate": "2024-09",
       "endDate": "2025-10",
       "image": "/images/envy-wheels-project.png",
-      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "description": "Supported and Contributed to an eCommerce platform for alloy and steel wheels by implementing new features, migrating and updating API endpoints, and improving system functionality and integration within an existing production system.",
       "skills": ["skill-1", "skill-2", "skill-7", "skill-8", "skill-9"],
       "tools": ["tool-1", "tool-5", "tool-8"]
     },
@@ -202,7 +202,7 @@
       "startDate": "2025-04",
       "endDate": "2025-04",
       "image": "/images/value-meal-project.png",
-      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "description": "A WordPress-based product website showcasing premium dog food formulas, emphasizing balanced nutrition, high-quality ingredients, and health benefits for dogs across different age groups and activity levels.",
       "skills": ["skill-7", "skill-8", "skill-9"],
       "tools": ["tool-7"]
     },
@@ -214,7 +214,7 @@
       "startDate": "2025-04",
       "endDate": "2025-04",
       "image": "/images/vitality-project.png",
-      "description": "Envy Wheels is an eCommerce website that offers a wide selection of alloy and steel wheels, allowing customers to browse, search by vehicle fitment, and purchase products online.",
+      "description": "A WordPress-based eCommerce website that presents dog food products with structured layouts, allowing users to browse items, view details, and explore nutrition-focused offerings in a clean and user-friendly interface.",
       "skills": ["skill-7", "skill-8", "skill-9"],
       "tools": ["tool-7"]
     }

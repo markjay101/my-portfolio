@@ -4,6 +4,7 @@ import { Project, Skill } from "@/lib/portfolio-types";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 export function ProjectsSection({
   projects,
@@ -37,6 +38,9 @@ export function ProjectsSection({
                     fill
                     className="object-cover"
                   />
+
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-black/10" />
                 </div>
 
                 <div>
@@ -55,7 +59,16 @@ export function ProjectsSection({
                   <p className="mt-3 text-sm leading-relaxed text-foreground/90">
                     {project.description}
                   </p>
-
+                  {project.url && (
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center justify-center rounded border border-border px-3 py-1.5 text-xs font-medium text-accent hover:bg-accent hover:text-background transition-colors"
+                    >
+                      Visit Site →
+                    </Link>
+                  )}
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.skills?.map((skillId) => {
                       const skill = skills.find((s) => s.id === skillId);
