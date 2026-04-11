@@ -156,7 +156,7 @@
       "image": "/images/ims-project.png",
       "description": "A web-based system designed for small to medium internet service providers to manage customers, service applications, modem devices, and status tracking in a centralized platform, improving operational efficiency and data organization.",
       "skills": ["skill-1", "skill-2", "skill-3", "skill-4"],
-      "tools": ["tool-1", "tool-3", "tool-5", "tool-8"]
+      "tools": ["tool-1", "tool-3", "tool-5", "tool-7", "tool-8"]
     },
     {
       "id": "proj-3",
@@ -192,7 +192,7 @@
       "image": "/images/investor-tracker-project.png",
       "description": "Investor Tracker is an AI-powered platform that lets users track investors or companies, analyzes trusted web data to generate market insights and buy/sell recommendations, and sends email notifications for the latest updates and news.",
       "skills": ["skill-1", "skill-2"],
-      "tools": ["tool-1", "tool-5"]
+      "tools": ["tool-1", "tool-5", "tool-8"]
     },
     {
       "id": "proj-6",
