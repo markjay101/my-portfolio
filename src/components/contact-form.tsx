@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
-
 export function ContactModal({
   open,
   setOpen,
@@ -18,11 +16,15 @@ export function ContactModal({
   });
   const [error, setError] = useState<string | null>(null);
   const [animateIn, setAnimateIn] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     if (!open) return;
     setError(null);
     setAnimateIn(false);
+    setPending(false);
+    setSent(false);
     const t = window.setTimeout(() => setAnimateIn(true), 0);
     return () => window.clearTimeout(t);
   }, [open]);
@@ -44,20 +46,26 @@ export function ContactModal({
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!CONTACT_EMAIL) {
-      setError("Contact email is not configured.");
-      return;
-    }
+    setPending(true);
+    setError(null);
+    setSent(false);
 
-    const params = new URLSearchParams({
-      subject: form.subject,
-      body: `From: ${form.email}\n\n${form.message}`,
-    });
-
-    window.location.href = `mailto:${CONTACT_EMAIL}?${params.toString()}`;
-
-    setForm({ email: "", subject: "", message: "" });
-    setOpen(false);
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    })
+      .then(async (res) => {
+        const j = (await res.json().catch(() => ({}))) as { error?: string };
+        if (!res.ok) throw new Error(j.error || "Failed to send message");
+        setForm({ email: "", subject: "", message: "" });
+        setSent(true);
+        window.setTimeout(() => setOpen(false), 900);
+      })
+      .catch((err) => {
+        setError(err instanceof Error ? err.message : "Failed to send message");
+      })
+      .finally(() => setPending(false));
   }
 
   if (!open) return null;
@@ -73,7 +81,9 @@ export function ContactModal({
         aria-modal="true"
         aria-label="Contact form"
         className={`w-full max-w-md rounded-lg border border-border bg-background p-6 shadow-lg transform-gpu transition-[transform,opacity] duration-300 ease-out ${
-          animateIn ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-2"
+          animateIn
+            ? "opacity-100 scale-100 translate-y-0"
+            : "opacity-0 scale-95 translate-y-2"
         }`}
       >
         <div className="flex items-center justify-between mb-4">
@@ -92,6 +102,11 @@ export function ContactModal({
           {error ? (
             <p className="text-sm text-red-500" role="alert">
               {error}
+            </p>
+          ) : null}
+          {sent ? (
+            <p className="text-sm text-foreground/90">
+              Thanks! Your message has been sent.
             </p>
           ) : null}
 
@@ -127,8 +142,9 @@ export function ContactModal({
           <button
             type="submit"
             className="w-full rounded bg-accent px-4 py-2 text-sm text-accent-fg hover:opacity-90 transition"
+            disabled={pending}
           >
-            Send
+            {pending ? "Sending..." : "Send"}
           </button>
         </form>
       </div>

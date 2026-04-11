@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "./site-header";
 import { ContactModal } from "./contact-form";
 
-export function PublicSiteShell({ children }: { children: ReactNode }) {
+export function PublicSiteShell({ children }: React.PropsWithChildren) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,4 +16,3 @@ export function PublicSiteShell({ children }: { children: ReactNode }) {
     </div>
   );
 }
-
